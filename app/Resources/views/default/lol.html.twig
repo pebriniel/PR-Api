@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    {% for dat in data %}
+        {{ dat.ID }} {{ dat.name }} <br/>
+        {% for t in dat.technology %}
+            {{ t.name }}
+        {% endfor %}
+    {% endfor %}
+
+
+
+{% endblock %}

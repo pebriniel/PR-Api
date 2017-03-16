@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Appprojects list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Lang</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Date</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for appProject in appProjects %}
+            <tr>
+                <td><a href="{{ path('appproject_show', { 'id': appProject.id }) }}">{{ appProject.id }}</a></td>
+                <td>{{ appProject.lang }}</td>
+                <td>{{ appProject.name }}</td>
+                <td>{{ appProject.description }}</td>
+                <td>{% if appProject.date %}{{ appProject.date|date('Y-m-d') }}{% endif %}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('appproject_show', { 'id': appProject.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('appproject_edit', { 'id': appProject.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('appproject_new') }}">Create a new appProject</a>
+        </li>
+    </ul>
+{% endblock %}

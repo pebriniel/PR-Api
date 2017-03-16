@@ -1,0 +1,9 @@
+p_test:
+    path:     /test/
+    defaults: { _controller: "AppBundle:Api:index" }
+    methods:  GET
+
+api:
+    type:     rest
+    resource: AppBundle\Controller\apiController
+    prefix:   api/

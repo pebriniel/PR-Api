@@ -1,0 +1,3 @@
+app_appprofil:
+    resource: "@AppBundle/Resources/config/routing/appprofil.yml"
+    prefix:   /appprofil

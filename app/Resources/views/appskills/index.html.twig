@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Appskills list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Category</th>
+                <th>Order</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for appSkill in appSkills %}
+            <tr>
+                <td><a href="{{ path('appskills_show', { 'id': appSkill.id }) }}">{{ appSkill.id }}</a></td>
+                <td>{{ appSkill.category }}</td>
+                <td>{{ appSkill.order }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('appskills_show', { 'id': appSkill.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('appskills_edit', { 'id': appSkill.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('appskills_new') }}">Create a new appSkill</a>
+        </li>
+    </ul>
+{% endblock %}

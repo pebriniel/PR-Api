@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Appexperiences list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Category</th>
+                <th>Order</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for appExperience in appExperiences %}
+            <tr>
+                <td><a href="{{ path('appexperience_show', { 'id': appExperience.id }) }}">{{ appExperience.id }}</a></td>
+                <td>{{ appExperience.category }}</td>
+                <td>{{ appExperience.order }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('appexperience_show', { 'id': appExperience.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('appexperience_edit', { 'id': appExperience.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('appexperience_new') }}">Create a new appExperience</a>
+        </li>
+    </ul>
+{% endblock %}

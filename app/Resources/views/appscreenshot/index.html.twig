@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Appscreenshots list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Url</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for appScreenshot in appScreenshots %}
+            <tr>
+                <td><a href="{{ path('appscreenshot_show', { 'id': appScreenshot.id }) }}">{{ appScreenshot.id }}</a></td>
+                <td>{{ appScreenshot.url }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('appscreenshot_show', { 'id': appScreenshot.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('appscreenshot_edit', { 'id': appScreenshot.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('appscreenshot_new') }}">Create a new appScreenshot</a>
+        </li>
+    </ul>
+{% endblock %}
