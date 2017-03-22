@@ -30,8 +30,14 @@
         "incenteev/composer-parameter-handler": "^2.0",
         "twig/twig": "^1.0||^2.0",
         "friendsofsymfony/rest-bundle": "^2.1",
-        "nelmio/cors-bundle": "^1.5"
+        "nelmio/cors-bundle": "^1.5",
+	"BS/CoreBundle" : "dev-master"
     },
+    "repositories" : [{
+	"type" : "vcs",
+	"url" : "https://boussad@bitbucket.org/boussad/bs-core.git"
+    }],
+
     "require-dev": {
         "sensio/generator-bundle": "^3.0",
         "symfony/phpunit-bridge": "^3.0"

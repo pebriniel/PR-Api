@@ -1,6 +1,6 @@
 <?php
 
-namespace AppBundle\Controller;
+ namespace AppBundle\Controller;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -8,7 +8,6 @@ use Symfony\Component\HttpFoundation\Request;
 
 use FOS\RestBundle\Controller\Annotations as Rest;
 
-use AppBundle\Entity\AppProject;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -39,7 +38,7 @@ class ApiController extends Controller
      {
           $em = $this->getDoctrine()
             ->getManager()
-            ->getRepository('AppBundle:AppProject');
+            ->getRepository('BSCoreBundle:AppProject');
 
             //$l = $em->findById(1);
 
@@ -66,7 +65,7 @@ class ApiController extends Controller
      {
           $em = $this->getDoctrine()
             ->getManager()
-            ->getRepository('AppBundle:AppExperience');
+            ->getRepository('BSCoreBundle:AppExperience');
 
           $users = $em->createQueryBuilder('q')
               ->leftJoin('q.company', 't')

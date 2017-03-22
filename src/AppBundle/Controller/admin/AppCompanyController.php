@@ -2,7 +2,8 @@
 
 namespace AppBundle\Controller\admin;
 
-use AppBundle\Entity\AppCompany;
+use BS\CoreBundle\Entity\AppCompany;
+
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -25,7 +26,7 @@ class AppCompanyController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $appCompanies = $em->getRepository('AppBundle:AppCompany')->findAll();
+        $appCompanies = $em->getRepository('BSCoreBundle:AppCompany')->findAll();
 
         return $this->render('appcompany/index.html.twig', array(
             'appCompanies' => $appCompanies,
