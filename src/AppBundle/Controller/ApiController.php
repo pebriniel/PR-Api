@@ -56,6 +56,28 @@ class ApiController extends Controller
         return new JsonResponse($users);
      }
 
+    /**
+     * @Rest\Get("profil/", name="api profil")
+     * @return JsonResponse
+     */
+     public function profilAction(Request $request)
+     {
+          $em = $this->getDoctrine()
+            ->getManager()
+            ->getRepository('BSCoreBundle:AppProfil');
+
+          $data = $em->createQueryBuilder('q')
+             ->getQuery()
+             ->getArrayResult();
+
+        $array = array();
+
+        for($i = 0; $i < sizeof($data); $i ++){
+            $array[$data[$i]['keyname']] = $data[$i]['value'];
+        }
+
+        return new JsonResponse($array);
+     }
 
     /**
      * @Rest\Get("experience/", name="api works")
@@ -85,7 +107,7 @@ class ApiController extends Controller
      {
           $em = $this->getDoctrine()
             ->getManager()
-            ->getRepository('AppBundle:AppTechnology');
+            ->getRepository('BSCoreBundle:AppTechnology');
 
           $v['lang'] = $em->createQueryBuilder('q')->where('q.category = :identifiant')->setParameter('identifiant', 0)->getQuery()->getArrayResult();
           $v['fram'] = $em->createQueryBuilder('q')->where('q.category = :identifiant')->setParameter('identifiant', 1)->getQuery()->getArrayResult();
@@ -102,7 +124,7 @@ class ApiController extends Controller
      {
           $em = $this->getDoctrine()
             ->getManager()
-            ->getRepository('AppBundle:AppExperience');
+            ->getRepository('BSCoreBundle:AppExperience');
 
           $data = $em->createQueryBuilder('q')
                       ->leftJoin('q.company', 'p')
