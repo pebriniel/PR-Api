@@ -43,7 +43,7 @@ class ApiController extends Controller
             //$l = $em->findById(1);
 
 
-          $users = $em->createQueryBuilder('q')
+          $data = $em->createQueryBuilder('q')
              ->leftJoin('q.technology', 't')
              ->leftJoin('q.team', 'm')
              ->leftJoin('q.screenshot', 's')
@@ -53,7 +53,7 @@ class ApiController extends Controller
              ->getQuery()
              ->getArrayResult();
 
-        return new JsonResponse($users);
+        return new JsonResponse($data);
      }
 
     /**
@@ -89,17 +89,35 @@ class ApiController extends Controller
             ->getManager()
             ->getRepository('BSCoreBundle:AppExperience');
 
-          $users = $em->createQueryBuilder('q')
+          $data = $em->createQueryBuilder('q')
               ->leftJoin('q.company', 't')
               ->addSelect('t')
              ->getQuery()
              ->getArrayResult();
 
-        return new JsonResponse($users);
+        return new JsonResponse($data);
+     }
+
+    /**
+     * @Rest\Get("medialsocial/", name="api works")
+     * @return JsonResponse
+     */
+     public function mediasocialAction(Request $request)
+     {
+          $em = $this->getDoctrine()
+            ->getManager()
+            ->getRepository('BSCoreBundle:AppSocialnetworking');
+
+
+        $data = $em->createQueryBuilder('q')
+                ->getQuery()
+                ->getArrayResult();
+
+        return new JsonResponse($data);
      }
 
 
-    /**
+    /**111
      * @Rest\Get("skills/", name="api skills")
      * @return JsonResponse
      */
