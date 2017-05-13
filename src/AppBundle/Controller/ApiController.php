@@ -117,7 +117,7 @@ class ApiController extends Controller
      }
 
 
-    /**111
+    /**
      * @Rest\Get("skills/", name="api skills")
      * @return JsonResponse
      */
